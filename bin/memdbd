@@ -76,7 +76,8 @@ if (require.main === module) {
         // prevent from exit
         process.on('SIGTERM', function(){});
         process.on('SIGINT', function(){});
-        setTimeout(function(){}, 100000000);
+        setTimeout(function(){}, 5000);
+        // setTimeout(function(){}, 100000000);
 
         return;
     }
