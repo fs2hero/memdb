@@ -187,6 +187,7 @@ exports.remoteExec = function(ip, cmd, opts){
 		if (pos != -1) {
 			cmd = cmd.substring(pos, cmd.length);
         }
+        console.log('cmd ',cmd);
         
         child = child_process.spawn('bash', ['-c', cmd]);
     }
