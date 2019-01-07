@@ -46,7 +46,12 @@ var proto = BackendLocker.prototype;
 proto.start = function(){
     return P.bind(this)
     .then(function(){
-        this.client = redis.createClient(this.config.port, this.config.host, {retry_max_delay : 10 * 1000, enable_offline_queue : true});
+        var opts = {retry_max_delay : 10 * 1000, enable_offline_queue : true};
+        for(var p in this.config.options){
+            opts[p] = this.config.options[p];
+        }
+
+        this.client = redis.createClient(this.config.port, this.config.host, opts);
         var self = this;
         this.client.on('error', function(err){
             self.logger.error(err.stack);
