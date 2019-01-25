@@ -36,16 +36,22 @@ module.exports = {
     // Global locking redis, all shards must connect to the same redis (or redis cluster)
     locking : {
         host : '127.0.0.1',
-        port : 6379,
+        port : 6973,
         db : 0,
+        options:{
+            auth_pass:'jywl2019'
+        }
     },
 
     // Data replication redis, one redis instance for each shard
     // You can override this in shard settings to choice different slave for each shard
     slave : {
         host : '127.0.0.1',
-        port : 6379,
+        port : 6973,
         db : 0,
+        options:{
+            auth_pass:'jywl2019'
+        }
     },
 
     // Log settings

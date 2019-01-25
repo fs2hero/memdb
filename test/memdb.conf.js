@@ -19,7 +19,7 @@ module.exports = {
 
     backend : {
         engine : 'mongodb',
-        url : 'mongodb://localhost/memdb-test',
+        url : 'mongodb://localhost/fishHunter',
     },
 
     locking : {
@@ -43,6 +43,25 @@ module.exports = {
     },
 
     collections : {
+        fish_hunter_area_fishes: {
+            // Index setting, modify it on your need
+            indexes : [
+                {
+                    keys : ['areaId','fishId'],
+                    unique : true,
+                    valueIgnore : {
+                        areaId : ['', -1],
+                        fishId : ['',-1]
+                    }
+                },
+                {
+                    keys : ['areaId'],
+                    valueIgnore : {
+                        areaId : ['', -1]
+                    }
+                }
+            ]
+        },
         player : {
             indexes : [
                 {

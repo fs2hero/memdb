@@ -27,6 +27,7 @@ var helpContent = '\
 MemDB - Distributed transactional in memory database\n\n\
 Usage: memdbcluster [command] [options]\n\n\
 Commands:\n\
+  version   show version information\n\
   start     Start cluster\n\
   stop      Stop cluster\n\
   status    Show cluster status\n\
@@ -128,7 +129,12 @@ if (require.main === module) {
     process.on('SIGINT', function(){});
 
     P.try(function(){
-        if(cmd === 'start'){
+        if(cmd === 'version'){
+            var version = require('../package').version;
+            version = 'v'+version;
+            console.log('version',version);
+        }
+        else if(cmd === 'start'){
             return P.map(shardIds, function(shardId){
                 var shardConfig = config.shardConfig(shardId);
                 console.log('starting %s on %s:%s...', shardId, shardConfig.host, shardConfig.port);

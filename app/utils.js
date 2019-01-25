@@ -336,12 +336,21 @@ exports.timeCounter = function(){
     return {
         add : function(name, time){
             if(!counts.hasOwnProperty(name)){
-                counts[name] = [0, 0, 0]; // total, count, average
+                counts[name] = [0, 0, 0, 10000, 0]; // total, count, average, min, max
             }
             var count = counts[name];
             count[0] += time;
             count[1]++;
             count[2] = count[0] / count[1];
+            
+            if(time < count[3]){
+                count[3] = time;
+            }
+
+            if(time > count[4]){
+                count[4] = time;
+            }
+
         },
         reset : function(){
             counts = {};

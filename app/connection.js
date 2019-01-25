@@ -60,7 +60,10 @@ consts.collMethods.forEach(function(method){
 
 proto.commit = function(){
     var self = this;
-    return P.each(Object.keys(this.collections), function(name){
+
+    var collections = Object.keys(this.collections);
+    self.logger.debug('[conn:%s] commitIndex[%j]', self._id,collections);
+    return P.each(collections, function(name){
         var collection = self.collections[name];
         return collection.commitIndex();
     })
