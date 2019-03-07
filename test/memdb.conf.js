@@ -35,7 +35,7 @@ module.exports = {
     },
 
     log : {
-        level : 'WARN',
+        level : 'DEBUG',
     },
 
     promise : {
@@ -79,6 +79,10 @@ module.exports = {
     },
 
     shards : {
+        cs3 : {
+            host : '127.0.0.1',
+            port : 52127,
+        },
         s1 : {
             host : '127.0.0.1',
             port : 32017,
